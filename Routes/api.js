@@ -12,6 +12,16 @@ router.get('/', async (req,res) => {
     }
     
 })
+router.post('/searchuser', async (req,res) => {
+    try {
+        const {firstname} = req.body;
+        const data = await Data.find({firstname:firstname})
+        res.json(data)
+    } catch (error) {
+        res.send(error)
+    }
+    
+})
 
 router.get('/getdatawithid/:id', async (req,res) => {
     try {
